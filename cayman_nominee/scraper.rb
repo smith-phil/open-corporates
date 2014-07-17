@@ -11,7 +11,8 @@ class CaymanScraper
 		@end_flag = end_flag
 	end 
 
-
+	# This method retuns lines of text from a PDF located on the web
+	# as an array for strings. One array element per PDF line.
 	def get_lines()
 
 		io = open(@source_url)
