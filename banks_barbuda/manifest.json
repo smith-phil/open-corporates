@@ -1,0 +1,15 @@
+{
+  "bot_id": "banks_barbuda",
+  "description": "This is a simple bot to add barbuda and anguila banks to OpenCorporates",
+  "data_type": "primary data",
+  "identifying_fields": [
+    "number",
+    "name",
+    "source_url",
+    "sample_date"
+  ],
+  "files": [
+    "scraper.rb"
+  ],
+  "frequency": "monthly"
+}

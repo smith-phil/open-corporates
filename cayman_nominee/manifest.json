@@ -1,0 +1,16 @@
+{
+  "bot_id": "cayman_nominee",
+  "description": "PDF scraper for Cayman Nominee Companies",
+  "data_type": "primary data",
+  "identifying_fields": [
+    "number",
+    "name",
+    "source_url",
+    "sample_date"
+
+  ],
+  "files": [
+    "scraper.rb"
+  ],
+  "frequency": "monthly"
+}
