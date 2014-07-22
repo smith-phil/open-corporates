@@ -10,27 +10,7 @@ class CaymanScraper
 		@start_flag = start_flag
 		@end_flag = end_flag
 	end 
-
-	# This method retuns lines of text from a PDF located on the web
-	# as an array for strings. One array element per PDF line.
-	def get_lines()
-
-		io = open(@source_url)
-		lines = Array.new()
-		PDF::Reader.open(io) do |reader|
-			reader.pages.each do |page|
-				lines.concat(page.text.lines())
-			end
-		end
-
-		#strip out surrounding whitespace and tabs
-		lines.collect(&:strip!)
-		lines.collect{|e| e.gsub! /\t/, ''}
-		
-		lines 
-
-	end 
-
+	
 	def scrape()
 
 		lines = get_lines()
@@ -46,7 +26,29 @@ class CaymanScraper
 		d.delete_if(&:empty?)
 
 		d
-	end 
+	end
+
+	private 
+		# This method retuns lines of text from a PDF located on the web
+		# as an array for strings. One array element per PDF line.
+		def get_lines()
+
+			io = open(@source_url)
+			lines = Array.new()
+			PDF::Reader.open(io) do |reader|
+				reader.pages.each do |page|
+					lines = lines + page.text.lines()
+				end
+			end
+
+			#strip out surrounding whitespace and tabs
+			lines.collect(&:strip!)
+			lines.collect{|e| e.gsub! /\t/, ''}
+			
+			lines 
+
+		end 
+ 
 end 
 
 id = "3807"
