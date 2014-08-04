@@ -37,7 +37,7 @@ class CaymanScraper
 			lines = Array.new()
 			PDF::Reader.open(io) do |reader|
 				reader.pages.each do |page|
-					lines = lines + page.text.lines()
+					lines = lines + page.text.lines.to_a
 				end
 			end
 
