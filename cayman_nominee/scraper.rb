@@ -62,14 +62,22 @@ d = scraper.scrape()
 
 # now we have each line, process each record
 d.each do |line|
-	l = line.split(/Nominee \(/)[0]
-	i = l.index(" ").to_i
+	i = line.index("Nominee (")
+
+	#l = line.split(/Nominee \(/)
+	#l = line.split(/Nominee \(/)[0]
+	l = line[0,i]
+	l2 = line[i..-1]
+	ix = l.index(" ").to_i
+	ix2 = l2.index(")").to_i
+
 	data = {
-		number: l[0,i],
-		name: l[i..-1].strip!,
+		number: l[0,ix],
+		name: l[ix..-1].strip!,
+		license_type: l2[0,ix2+1],
+		recognised: l2[ix2+1..-1].strip!,
 		sample_date: Time.now,
 		source_url: url
 	}
 	puts JSON.dump(data)
 end
-
