@@ -4,13 +4,21 @@
   "data_type": "primary data",
   "identifying_fields": [
     "number",
-    "name",
-    "source_url",
-    "sample_date"
-
+    "name"
   ],
   "files": [
-    "scraper.rb"
+    "scraper.rb", "license_transformer.rb"
   ],
-  "frequency": "monthly"
+  "transformers": [{
+    "file":  "license_transformer.rb",
+    "data_type": "simple-licence",
+    "identifying_fields": ["number", "name"]
+  }],
+  "frequency": "monthly",
+   "publisher": {
+    "name": "Cayman Islands Monetary Authority",
+    "url": "http://www.cimoney.com.ky",
+    "terms": "Copyright of the Cayman Islands Monetary Authority",
+    "terms_url": "http://www.cimoney.com.ky/about_cima/default.aspx?id=1304"
+  }
 }
